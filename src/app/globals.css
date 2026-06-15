@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --background: #020617;
+  --foreground: #e2e8f0;
+  --surface: rgba(15, 23, 42, 0.72);
+  --surface-border: rgba(148, 163, 184, 0.12);
+  --surface-soft: rgba(2, 6, 23, 0.82);
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, rgba(56,189,248,0.18), transparent 26%),
+    radial-gradient(circle at 88% 12%, rgba(168,85,247,0.2), transparent 22%),
+    radial-gradient(circle at 20% 85%, rgba(16,185,129,0.12), transparent 20%),
+    linear-gradient(180deg, #020617 0%, #08111f 48%, #020617 100%);
+  background-size: 140% 140%;
+  animation: gradientShift 18s ease-in-out infinite alternate;
+  color: var(--foreground);
+  transition: background 220ms ease, color 220ms ease;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+::selection {
+  background: rgba(56,189,248,0.35);
+  color: #0f172a;
+}
+
+[data-theme='light'] {
+  color-scheme: light;
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --surface: rgba(248, 250, 252, 0.82);
+  --surface-border: rgba(148, 163, 184, 0.16);
+  --surface-soft: rgba(255, 255, 255, 0.88);
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+[data-theme='light'] body {
+  background: radial-gradient(circle at top, rgba(56,189,248,0.2), transparent 30%),
+    radial-gradient(circle at 80% 10%, rgba(168,85,247,0.12), transparent 24%),
+    radial-gradient(circle at 10% 90%, rgba(16,185,129,0.12), transparent 22%),
+    linear-gradient(180deg, #f8fafc 0%, #eef5ff 48%, #f8fafc 100%);
+  background-size: 140% 140%;
+}
+
+.glass-card {
+  background: var(--surface);
+  backdrop-filter: blur(24px);
+  border: 2px solid var(--surface-border);
+  animation: cardBorderShift 6s ease-in-out infinite;
+}
+
+[data-theme='light'] .glass-card {
+  background: var(--surface);
+  border-color: var(--surface-border);
+}
+
+[data-theme='light'] .bg-slate-950\/60,
+[data-theme='light'] .bg-slate-950\/70,
+[data-theme='light'] .bg-slate-950\/80 {
+  background-color: rgba(255, 255, 255, 0.85) !important;
+}
+
+[data-theme='light'] .text-slate-100 {
+  color: #0f172a !important;
+}
+
+[data-theme='light'] .text-slate-300,
+[data-theme='light'] .text-slate-400 {
+  color: #475569 !important;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
+
+.skeleton {
+  animation: shimmer 1.3s ease-in-out infinite;
+  background: linear-gradient(90deg, rgba(148, 163, 184, 0.08) 25%, rgba(148, 163, 184, 0.16) 50%, rgba(148, 163, 184, 0.08) 75%);
+  background-size: 800px 100%;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+.glass-card {
+  transition: transform 240ms ease, border-color 240ms ease, background-color 240ms ease, box-shadow 240ms ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(125, 211, 252, 0.18);
+  box-shadow: 0 24px 60px rgba(2, 6, 23, 0.28);
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #a5f3fc 0%, #93c5fd 45%, #c4b5fd 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@keyframes cardBorderShift {
+  0% {
+    box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.22), 0 0 0 0 rgba(16, 185, 129, 0.05);
+  }
+  50% {
+    box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.28), 0 0 0 0 rgba(59, 130, 246, 0.06);
+  }
+  100% {
+    box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.22), 0 0 0 0 rgba(56, 189, 248, 0.05);
+  }
+}
+
+.all-cards-title {
+  letter-spacing: 0.02em;
+}
